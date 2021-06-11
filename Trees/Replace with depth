@@ -1,0 +1,39 @@
+/************************************************************
+
+    Following is the structure for the TreeNode class
+
+    template <typename T>
+    class TreeNode {
+     public:
+        T data;
+        vector<TreeNode<T>*> children;
+
+        TreeNode(T data) {
+            this->data = data;
+        }
+
+        ~TreeNode() {
+            for (int i = 0; i < children.size(); i++) {
+                delete children[i];
+            }
+        }
+    };
+
+************************************************************/
+int i =0;
+void replaceWithDepthValue(TreeNode<int>* root) 
+{
+    // Write your code here
+    if(root == NULL) return;
+    if(i == 0) 
+    {
+        root->data = 0;
+        ++i;
+    }
+    for(int i = 0;i < root->children.size(); i++)
+    {
+        root->children[i]->data = root->data+1;
+        replaceWithDepthValue(root->children[i]);
+    }
+    return;
+}
