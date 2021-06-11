@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+int getHeight(TreeNode<int>* root) {
+    // Write your code here
+    if(root->children.size() == 0) return 1;
+    else
+    {
+        int a = INT_MIN;
+        for(int i = 0;i< root->children.size();i++)
+        {
+            a =  max( 1+getHeight(root->children[i]),a);
+        }
+        return a;
+    }
+}
