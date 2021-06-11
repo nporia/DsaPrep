@@ -1,3 +1,4 @@
+
 bool isPresent(TreeNode<int>* root, int x) 
 {
     // Write your code here
@@ -5,10 +6,11 @@ bool isPresent(TreeNode<int>* root, int x)
     else if(root->data == x) return true;
     else
     {
-        bool a = false;
+        bool a;
         for(int i = 0; i < root->children.size(); i++)
         {
-            a = a or isPresent(root->children[i],x);
+            a = isPresent(root->children[i],x);
+            if(a == true) return true;
         }
         return a;
     }
