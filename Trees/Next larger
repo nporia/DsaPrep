@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+TreeNode<int>* getNextLargerElement(TreeNode<int>* root, int x) 
+{
+    // Write your code here
+    if(root == NULL) return NULL;
+    else
+    {
+        int diff = INT_MAX;
+        TreeNode<int>* temp = NULL;
+        if(root->data - x > 0 and root->data - x  < diff)
+        {
+            diff = root->data - x ;
+            temp = root;
+        }
+        for(int i = 0; i < root->children.size();i++)
+        {
+             TreeNode<int>* a = getNextLargerElement(root->children[i], x) ;
+             if(a != NULL and a->data - x < diff)
+             {
+                 temp = a;
+                 diff = a->data - x;
+             }
+        }
+        return temp;
+    }
+}
