@@ -1,0 +1,16 @@
+Given a tree and an integer x, find and return the number of nodes which contains data greater than x
+
+
+solution:
+int getLargeNodeCount(TreeNode<int>* root, int x) {
+    // Write your code here
+     int a = 0;
+    if(root->data > x)  a = 1;
+       
+        for(int i = 0;i< root->children.size(); i++)
+        {
+            a += getLargeNodeCount(root->children[i],x);
+        }
+        return a;
+ 
+}
