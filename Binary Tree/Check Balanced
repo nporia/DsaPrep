@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int height(BinaryTreeNode<int> *root)
+{
+    if(root == NULL) return 0;
+    else
+    {
+        return 1 + max(height(root->left),height(root->right));
+    }
+}
+
+bool isBalanced(BinaryTreeNode<int> *root)
+{
+	// Write your code here
+    if(root == NULL) return true;
+    bool a = true;
+    a = isBalanced(root->left);
+    if(a == false) return false;
+    a = isBalanced(root->right);
+    if(a == false) return false;
+    int b,c;
+    b = height(root->left);
+    c = height(root->right);
+    if( abs(b-c) <= 1) return true;
+    else return false;
+    return true;
+}
