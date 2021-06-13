@@ -1,26 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Solution
+vector<int> reverseLevelOrder(Node *root)
 {
-    public:
-    //Function to return the level order traversal of a tree.
-    vector<int> levelOrder(Node* node)
-    {
-       vector <int> a;
-      if(node == NULL) return a;
-      else
-      {
-          queue <Node*> q;
-          q.push(node);
-         
-          while(q.size() != 0)
-          {
-             a.push_back(q.front()->data);
-              if(q.front()->left != NULL) q.push(q.front()->left);
-              if(q.front()->right != NULL) q.push(q.front()->right);
-              q.pop();
-          }
-          return a;
-      }
-    }
-};
+      vector <int> a;
+    if(root == NULL) return a;
+    queue <Node * > q;
+   q.push(root);
+   while(q.size() != 0)
+   {
+       a.push_back(q.front()->data);
+       if(q.front()->right != NULL) q.push(q.front()->right );
+       if(q.front()->left != NULL) q.push(q.front()->left );
+       q.pop();
+   }
+   reverse(a.begin(), a.end());
+    return a;
+}
