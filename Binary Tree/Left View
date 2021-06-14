@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> leftView(Node *root)
+{
+   // Your code here
+   vector <int> a;
+   if(root == NULL) return a; 
+   else
+   {
+       queue < Node *> q;
+       q.push(root);
+       q.push(NULL);
+       a.push_back(q.front()->data);
+       while(q.size() != 0)
+       {
+           if(q.front() == NULL)
+           {
+               if(q.size() == 1) return a; // final level has been also completed
+               else
+               {
+                   q.push(NULL);
+                   q.pop();
+                   a.push_back(q.front()->data);
+               }
+               
+           }
+           else
+           {
+               if(q.front()->left != NULL) q.push(q.front()->left);
+               if(q.front()->right != NULL) q.push(q.front()->right);
+               q.pop();
+           }
+       }
+      
+   }
+    return a;
+}
